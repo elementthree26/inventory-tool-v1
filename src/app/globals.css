@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 37 99 235;
+    --color-primary-dark: 29 78 216;
+  }
+}
+
+@layer components {
+  .filter-checkbox {
+    @apply flex items-center gap-2 py-1 cursor-pointer text-sm text-gray-700 hover:text-gray-900;
+  }
+
+  .filter-checkbox input[type="checkbox"],
+  .filter-checkbox input[type="radio"] {
+    @apply w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold border-2 border-blue-600 hover:bg-blue-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full;
+  }
+
+  .chip-dismiss {
+    @apply ml-1 text-blue-600 hover:text-blue-900 cursor-pointer font-bold;
+  }
+
+  .card-hover {
+    @apply transition-shadow hover:shadow-lg;
+  }
+}
+
+/* Range slider styles */
+input[type="range"] {
+  @apply w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  @apply appearance-none w-5 h-5 bg-blue-600 rounded-full cursor-pointer;
+  -webkit-appearance: none;
+}
+
+input[type="range"]::-moz-range-thumb {
+  @apply w-5 h-5 bg-blue-600 rounded-full cursor-pointer border-0;
+}
+
+/* Lightbox overlay */
+.lightbox-overlay {
+  @apply fixed inset-0 bg-black/90 z-50 flex items-center justify-center;
+}
+
+/* Accordion animation */
+.accordion-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+/* Sticky CTA */
+@media (min-width: 1024px) {
+  .sticky-cta {
+    position: sticky;
+    top: 1rem;
+  }
+}
+
+/* Mobile filter overlay */
+.filter-overlay {
+  @apply fixed inset-0 z-50 bg-white overflow-y-auto;
+}
+
+/* Scrollbar styling */
+.filter-sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.filter-sidebar::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+.filter-sidebar::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full;
+}
