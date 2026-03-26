@@ -18,7 +18,7 @@ export default function HomePage() {
               <Link href="/inventory" className="btn-primary text-center text-lg px-8 py-4">
                 Browse Inventory
               </Link>
-              <Link href="/inventory?condition=new" className="btn-secondary !text-white !border-white hover:!bg-white/10 text-center text-lg px-8 py-4">
+              <Link href="/inventory?condition=new" className="bg-transparent text-white px-8 py-4 rounded-lg font-semibold border-2 border-white hover:bg-white/10 transition-colors text-center text-lg">
                 New Vehicles
               </Link>
             </div>
