@@ -1,0 +1,78 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Vehicle {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Basic Information
+  year        Int
+  make        String
+  model       String
+  vehicleType String // School Bus, Shuttle Bus, Van, Coach
+  condition   String // New, Pre-Owned
+  stockNumber String   @unique
+  vin         String
+  mileage     Int?     // Required if Pre-Owned
+  price       Float?   // Null = "Contact for Pricing"
+  description String?  // Rich text overview
+
+  // Specs
+  cdlRequired          String  // Required, Not Required
+  maxCapacity          Int     // Total max occupants
+  standardPassengers   Int     // Seat-up passenger count
+  crew                 String? // Driver, Driver + Co-Pilot
+  wheelchairAccessible String  // Yes, No
+  liftManufacturer     String? // Only if wheelchair accessible
+  wheelchairPositions  Int?    // Only if wheelchair accessible
+  wheelbase            String?
+  suspensionType       String?
+  engineMake           String?
+  engineModel          String?
+  fuelType             String  // Diesel, Electric, Gas
+  fuelTankCapacity     String?
+  ac                   String? // BTU value
+  luggage              String?
+  brake                String?
+  transmissionMfr      String?
+  transmissionModel    String?
+  exteriorColor        String?
+  interiorColor        String?
+
+  // Media
+  images       String? // JSON array of image URLs
+  floorPlan    String? // URL to floor plan PDF/image
+  matterportUrl String? // Matterport 360 tour URL
+  featuredImage String? // Override thumbnail
+
+  // Publishing
+  status           String  @default("Draft") // Draft, Pending Review, Published
+  visibility       String  @default("Public") // Public, Private
+  includeOnWebsite Boolean @default(true)
+
+  // Taxonomies (stored as JSON arrays for SQLite simplicity)
+  locations  String? // JSON array
+  industries String? // JSON array
+
+  // Form
+  contactFormEmbed String? // HubSpot embed code
+
+  // Generated
+  slug String @unique
+}
+
+model Taxonomy {
+  id       Int    @id @default(autoincrement())
+  type     String // vehicleType, make, model, location, industry
+  value    String
+  parentId Int?   // For model linked to make
+
+  @@unique([type, value])
+}
