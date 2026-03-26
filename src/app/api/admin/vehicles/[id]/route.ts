@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
+export const dynamic = 'force-dynamic'
+
 function generateSlug(year: number, make: string, model: string, vehicleType: string, stockNumber: string): string {
   return `${year}-${make}-${model}-${vehicleType}-${stockNumber}`
     .toLowerCase()

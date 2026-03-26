@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getVehicleByStockNumber, getSimilarVehicles } from '@/lib/inventory'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(
   _request: NextRequest,
   { params }: { params: { stockNumber: string } }

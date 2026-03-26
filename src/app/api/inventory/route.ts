@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getInventory } from '@/lib/inventory'
 import type { FilterState } from '@/types/inventory'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
 

@@ -4,6 +4,8 @@ import { getVehicleBySlug, getSimilarVehicles } from '@/lib/inventory'
 import type { Vehicle } from '@/types/inventory'
 import VehicleDetailClient from './VehicleDetailClient'
 
+export const dynamic = 'force-dynamic'
+
 interface PageProps {
   params: { slug: string }
 }
